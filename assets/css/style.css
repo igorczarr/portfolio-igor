@@ -181,10 +181,18 @@ body.bg-vrtice-dark {
 .dossier-title { display: block; font-size: 0.85rem; color: var(--gold-base); font-weight: 700; letter-spacing: 2px; margin-bottom: 15px; text-transform: uppercase; }
 .dossier-desc { font-size: 0.95rem; color: #888; margin-bottom: 8px; }
 
-.capital-metrics { display: flex; gap: 60px; border-top: 1px solid var(--border-subtle); padding-top: 40px; margin-top: 30px; }
-.metric-item { display: flex; flex-direction: column; gap: 8px; }
-.m-number { font-family: 'Abhaya Libre', serif; font-size: 2.8rem; color: var(--white-off); line-height: 1; }
-.m-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 3px; color: #666; }
+/* Métricas Fiduciárias (Desktop) */
+.capital-metrics { 
+    display: flex; 
+    justify-content: center; /* Força o alinhamento ao centro */
+    gap: 100px; /* Mais espaço para respirar */
+    border-top: 1px solid var(--border-subtle); 
+    padding-top: 40px; 
+    margin-top: 40px; 
+}
+.metric-item { display: flex; flex-direction: column; align-items: center; gap: 5px; } /* Texto centralizado com o número */
+.m-number { font-family: 'Abhaya Libre', serif; font-size: 3.2rem; color: var(--gold-base); line-height: 1; }
+.m-label { font-size: 0.75rem; color: #666; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
 
 /* Micro-Pill Navigation (Aba de Artes - ARREDONDADA E DE VIDRO) */
 .micro-pill-wrapper { position: sticky; top: 20px; z-index: 100; display: flex; justify-content: center; margin: 40px 0; }
@@ -293,7 +301,18 @@ body.bg-vrtice-dark {
     .dossier-intersect-area { flex-direction: column; align-items: flex-start; gap: 20px; margin-top: -50px; }
     .avatar-ring { width: 120px; height: 120px; }
     .dossier-name { font-size: 2rem; }
-    .capital-metrics { flex-direction: column; gap: 20px; }
+    /* O Segredo do Perfil Horizontalizado (Mobile) */
+    .capital-metrics { 
+        flex-direction: row; 
+        justify-content: space-between; /* Distribui uniformemente */
+        gap: 10px; 
+        padding-top: 25px; 
+        margin-top: 25px;
+        border-top: none; /* Remove a linha para parecer que faz parte da Bio */
+    }
+    .metric-item { align-items: center; }
+    .m-number { font-size: 1.8rem; } /* Número menor e mais elegante no mobile */
+    .m-label { font-size: 0.55rem; letter-spacing: 1px; }
     
     /* O SEGREDO DO MOBILE: O MENU ACORDEÃO SEM ROLAGEM */
     .micro-pill-wrapper { margin: 20px 0; width: 100%; display: flex; justify-content: center; }
