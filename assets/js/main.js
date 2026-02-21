@@ -1,19 +1,27 @@
 /**
- * IGOR | VRTICE - DOSSIÊ OPERACIONAL (JS MESTRE)
- * Engenharia de Front-End: SPA, GSAP Text Reveals, Parallax e Interações Fluidas
+ * IGOR | VRTICE - DOSSIÊ OPERACIONAL (JS ESTABILIZADO)
+ * Engenharia de Front-End: SPA, GSAP Text Reveals, Parallax e Motor Isotope
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. REGISTRO DE PLUGINS DE ALTA PERFORMANCE
+    // 1. REGISTRO DE PLUGINS
     gsap.registerPlugin(ScrollTrigger);
 
     // ==============================================================
-    // 2. PRELOADER & ENTRADA CINEMATOGRÁFICA (HERO)
+    // 2. PRELOADER & ENTRADA CINEMATOGRÁFICA (Agora focada no Portfólio)
     // ==============================================================
     const tl = gsap.timeline({
         onComplete: () => {
-            ScrollTrigger.refresh();
             initManifestoAnimations();
+            initNeuralSpotlight(); 
+            
+            // CARGA ESTRATÉGICA: Renderiza o Portfólio na abertura
+            renderPortfolio('tab-estetica');
+            setTimeout(() => {
+                const firstTab = document.querySelector('.micro-tab[data-tab="tab-estetica"]');
+                if(firstTab) updateMicroPillSlider(firstTab);
+                ScrollTrigger.refresh();
+            }, 100);
         }
     });
     
@@ -25,12 +33,16 @@ document.addEventListener('DOMContentLoaded', () => {
       .to(".logo-anim-wrapper", { scale: 0.9, opacity: 0, duration: 0.6, ease: "power2.in" })
       .to("#preloader", { y: "-100%", duration: 1.2, ease: "expo.inOut" }, "-=0.2")
       
-      // Text Reveals (As Máscaras)
-      .fromTo(".anim-fade-up", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1, stagger: 0.2, ease: "power3.out" }, "-=0.6")
-      .to(".text-reveal", { y: "0%", duration: 1.2, stagger: 0.15, ease: "power4.out" }, "-=0.8")
+      // ANIMAÇÕES DE ENTRADA DO PORTFÓLIO (A nova página inicial)
+      .fromTo(".dossier-cover-wrapper", { opacity: 0 }, { opacity: 1, duration: 1 }, "-=0.5")
+      .fromTo(".avatar-ring", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8, ease: "back.out(1.7)" }, "-=0.4")
+      .fromTo(".dossier-bio > *", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power2.out" }, "-=0.6")
+      .fromTo(".metric-item", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power2.out" }, "-=0.4")
+      .fromTo(".micro-pill-wrapper", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, "-=0.4")
       
-      // Entrada da Cápsula Flutuante de Navegação
-      .fromTo(".floating-pill-nav", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "-=0.5");
+      // Botões Globais de Conversão e Navegação
+      .fromTo(".floating-pill-nav", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "-=0.5")
+      .fromTo(".floating-zap", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.7)" }, "-=0.8");
 
 
     // ==============================================================
@@ -38,7 +50,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==============================================================
     function initManifestoAnimations() {
         
-        // 3.1. Lasers de Divisão (Desenhando a luz horizontalmente)
+        // 3.0. Animação do Hero do Manifesto (Dispara apenas quando a aba Visão é aberta)
+        gsap.fromTo(".manifesto-hero .anim-fade-up", 
+            { opacity: 0, y: 20 }, 
+            { scrollTrigger: { trigger: ".manifesto-hero", start: "top 85%" }, opacity: 1, y: 0, duration: 1, stagger: 0.2, ease: "power3.out" }
+        );
+        gsap.to(".manifesto-hero .text-reveal", {
+            scrollTrigger: { trigger: ".manifesto-hero", start: "top 85%" },
+            y: "0%", duration: 1.2, stagger: 0.15, ease: "power4.out"
+        });
+
+        // 3.1. Lasers de Divisão
         gsap.utils.toArray('.laser-divider').forEach(laser => {
             gsap.to(laser, {
                 scrollTrigger: { trigger: laser, start: "top 90%" },
@@ -46,52 +68,34 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // 3.2. Leitura Guiada (Textos do Manifesto)
+        // 3.2. Leitura Guiada (Sticky Layout)
         gsap.utils.toArray('.split-text-layout').forEach(layout => {
             const label = layout.querySelector('.section-label');
             const paragraphs = layout.querySelectorAll('.section-content p, .section-content ul');
             
-            // O Título "Sticky" entra com elegância lateral
             gsap.fromTo(label, 
                 { opacity: 0, x: -30 },
                 { scrollTrigger: { trigger: layout, start: "top 80%" }, opacity: 1, x: 0, duration: 1, ease: "power3.out" }
             );
             
-            // Os parágrafos fluem como uma cascata
             gsap.fromTo(paragraphs, 
                 { opacity: 0, y: 20 },
                 { scrollTrigger: { trigger: layout, start: "top 80%" }, opacity: 1, y: 0, stagger: 0.15, duration: 0.8, ease: "power2.out" }
             );
         });
 
-        // 3.3. O Arsenal Técnico (Bordas SVG e Identidade Neural VRTICE)
+        // 3.3. Arsenal Técnico
         const arsenalCards = document.querySelectorAll('.anim-arsenal');
         arsenalCards.forEach((card, i) => {
-            
-            // INJEÇÃO DA IDENTIDADE: Efeito Spotlight Neural Grid
-            card.addEventListener("mousemove", (e) => {
-                const rectBox = card.getBoundingClientRect();
-                const x = e.clientX - rectBox.left;
-                const y = e.clientY - rectBox.top;
-                card.style.setProperty("--mouse-x", `${x}px`);
-                card.style.setProperty("--mouse-y", `${y}px`);
-            });
-
-            // Animação da Borda SVG
             const rect = card.querySelector('.arsenal-border-rect');
             if (rect) {
                 rect.style.strokeDasharray = "2000";
                 rect.style.strokeDashoffset = "2000";
                 gsap.to(rect, {
                     scrollTrigger: { trigger: ".arsenal-grid", start: "top 85%" },
-                    strokeDashoffset: 0,
-                    duration: 2.5,
-                    ease: "power3.out",
-                    delay: i * 0.2
+                    strokeDashoffset: 0, duration: 2.5, ease: "power3.out", delay: i * 0.2
                 });
             }
-
-            // Revelação do Conteúdo Interno
             const content = card.querySelector('.arsenal-content');
             if (content) {
                 gsap.fromTo(content, 
@@ -102,6 +106,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Efeito Spotlight (Identidade VRTICE)
+    function initNeuralSpotlight() {
+        const cards = document.querySelectorAll(".arsenal-card");
+        cards.forEach(card => {
+            card.addEventListener("mousemove", (e) => {
+                const rectBox = card.getBoundingClientRect();
+                const x = e.clientX - rectBox.left;
+                const y = e.clientY - rectBox.top;
+                card.style.setProperty("--mouse-x", `${x}px`);
+                card.style.setProperty("--mouse-y", `${y}px`);
+            });
+        });
+    }
 
     // ==============================================================
     // 4. MOTOR SPA & CÁPSULA FLUTUANTE GLOBAL (THE PILL)
@@ -117,48 +134,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const index = e.target.getAttribute('data-index');
             
-            // Movimenta o Slider Físico (0% ou 100%)
+            // Movimenta o Slider Físico (0 = Esquerda, 1 = Direita)
             pillSlider.style.transform = index === "0" ? "translateX(0%)" : "translateX(100%)";
             
-            // Alterna o estado ativo
             pillBtns.forEach(b => b.classList.remove('active'));
             e.target.classList.add('active');
 
-            // Scroll elegante para o topo
             window.scrollTo({ top: 0, behavior: 'smooth' });
 
-            // Transição SPA com sensação de profundidade
-            if (index === "1") {
-                viewVisao.classList.remove('active-view');
-                viewVisao.classList.add('hidden-view');
-                
-                setTimeout(() => {
-                    viewExecucao.classList.remove('hidden-view');
-                    viewExecucao.classList.add('active-view');
-                    
-                    // Inicializa a primeira aba do Dossiê e recalcula Slider da Micro-Pill
-                    renderPortfolio('tab-estetica'); 
-                    setTimeout(() => {
-                        updateMicroPillSlider(document.querySelector('.micro-tab[data-tab="tab-estetica"]'));
-                        ScrollTrigger.refresh();
-                    }, 100);
-                }, 400); // Aguarda a animação de saída
-            } else {
+            if (index === "0") {
+                // Vai para VISÃO (Manifesto)
                 viewExecucao.classList.remove('active-view');
                 viewExecucao.classList.add('hidden-view');
                 
                 setTimeout(() => {
                     viewVisao.classList.remove('hidden-view');
                     viewVisao.classList.add('active-view');
-                    ScrollTrigger.refresh();
+                    // Atualiza os gatilhos de scroll para a nova página visível
+                    setTimeout(() => ScrollTrigger.refresh(), 100);
+                }, 400);
+            } else {
+                // Vai para EXECUÇÃO (Portfólio)
+                viewVisao.classList.remove('active-view');
+                viewVisao.classList.add('hidden-view');
+                
+                setTimeout(() => {
+                    viewExecucao.classList.remove('hidden-view');
+                    viewExecucao.classList.add('active-view');
+                    setTimeout(() => ScrollTrigger.refresh(), 100);
                 }, 400);
             }
         });
     });
 
-
     // ==============================================================
-    // 5. BANCO DE DADOS DA EXECUÇÃO (O ACERVO ALINHADO COM A NOVA COPY)
+    // 5. BANCO DE DADOS DA EXECUÇÃO
     // ==============================================================
     const portfolioDB = {
         'tab-estetica': [
@@ -177,19 +187,15 @@ document.addEventListener('DOMContentLoaded', () => {
         ]
     };
 
-
     // ==============================================================
     // 6. MOTOR DO DOSSIÊ (MICRO-PILL, ISOTOPE E PARALLAX)
     // ==============================================================
     
-    // 6.1. Parallax da Capa
     gsap.to(".dossier-cover-img", {
-        yPercent: 25,
-        ease: "none",
+        yPercent: 25, ease: "none",
         scrollTrigger: { trigger: ".dossier-header", start: "top top", end: "bottom top", scrub: true }
     });
 
-    // 6.2. Lógica da Micro-Pill (O Menu Flutuante das Artes)
     const microTabs = document.querySelectorAll('.micro-tab');
     const microSlider = document.getElementById('dossier-slider');
     const filterWrapper = document.getElementById('niche-filters-wrapper');
@@ -204,11 +210,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     microTabs.forEach(tab => {
         tab.addEventListener('click', (e) => {
+            const targetBtn = e.currentTarget;
             microTabs.forEach(t => t.classList.remove('active'));
-            e.target.classList.add('active');
+            targetBtn.classList.add('active');
             
-            updateMicroPillSlider(e.target);
-            const targetTab = e.target.getAttribute('data-tab');
+            updateMicroPillSlider(targetBtn);
+            const targetTab = targetBtn.getAttribute('data-tab');
             renderPortfolio(targetTab);
         });
     });
@@ -218,20 +225,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if(activeTab) updateMicroPillSlider(activeTab);
     });
 
-    // 6.3. O Processador de Renderização e Filtros
     function renderPortfolio(tabId) {
-        if(tabId === 'tab-estetica') {
-            filterWrapper.classList.add('show');
-        } else {
-            filterWrapper.classList.remove('show');
-        }
+        if(tabId === 'tab-estetica') filterWrapper.classList.add('show');
+        else filterWrapper.classList.remove('show');
 
         gsap.to(renderArea, { opacity: 0, duration: 0.2, onComplete: () => {
             renderArea.innerHTML = ''; 
             if(isotopeInstance) { isotopeInstance.destroy(); isotopeInstance = null; }
 
             let newHTML = '';
-            
             if(tabId === 'tab-estetica') {
                 newHTML = portfolioDB[tabId].map(item => `
                     <div class="port-item filter-${item.nicho}">
@@ -245,8 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                `).join('');
+                    </div>`).join('');
             } 
             else if (tabId === 'tab-video') {
                 newHTML = portfolioDB[tabId].map(item => `
@@ -255,8 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <img src="${item.thumb}" alt="Vídeo VRTICE" onerror="this.src='https://via.placeholder.com/800x450/111/333?text=PLAY+VIDEO'">
                             <div class="play-overlay"><i class="ph-fill ph-play-circle"></i></div>
                         </div>
-                    </div>
-                `).join('');
+                    </div>`).join('');
             }
             else if (tabId === 'tab-hardcode') {
                 newHTML = portfolioDB[tabId].map(item => `
@@ -265,29 +265,24 @@ document.addEventListener('DOMContentLoaded', () => {
                             <img src="${item.thumb}" alt="Site Ultra-rápido VRTICE" onerror="this.src='https://via.placeholder.com/1200x600/111/333?text=MOCKUP+SITE'">
                             <div class="play-overlay"><i class="ph-fill ph-magnifying-glass-plus"></i></div>
                         </div>
-                    </div>
-                `).join('');
+                    </div>`).join('');
             }
 
             renderArea.innerHTML = newHTML;
-
-            isotopeInstance = new Isotope(renderArea, {
-                itemSelector: '.port-item',
-                layoutMode: 'fitRows'
-            });
-
+            
+            // Recria a grelha inteligentemente
+            isotopeInstance = new Isotope(renderArea, { itemSelector: '.port-item', layoutMode: 'fitRows' });
+            
             gsap.to(renderArea, { opacity: 1, duration: 0.4 });
             setTimeout(() => ScrollTrigger.refresh(), 200);
         }});
     }
 
-    // Filtros Isotope
     const filterBtns = document.querySelectorAll('.niche-btn');
     filterBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             filterBtns.forEach(b => b.classList.remove('active'));
             e.target.classList.add('active');
-            
             const filterValue = e.target.getAttribute('data-filter');
             if(isotopeInstance) {
                 isotopeInstance.arrange({ filter: filterValue === 'all' ? '*' : `.filter-${filterValue}` });
@@ -298,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ==============================================================
-    // 7. MODAL CINEMATOGRÁFICO DE EXPANSÃO
+    // 7. MODAL CINEMATOGRÁFICO
     // ==============================================================
     const modal = document.getElementById('portfolio-modal');
     const modalMedia = document.getElementById('modal-media');
@@ -308,16 +303,12 @@ document.addEventListener('DOMContentLoaded', () => {
     window.openModal = function(mediaSrc, copyText, type) {
         modalMedia.innerHTML = ''; 
         modalCopy.innerHTML = copyText;
-
-        if(type === 'video') {
-            modalMedia.innerHTML = `<video src="${mediaSrc}" controls autoplay playsinline></video>`;
-        } else {
-            modalMedia.innerHTML = `<img src="${mediaSrc}" alt="VRTICE Mockup" onerror="this.src='https://via.placeholder.com/1000x600/111/333?text=MOCKUP+VIEW'">`;
-        }
-
+        if(type === 'video') modalMedia.innerHTML = `<video src="${mediaSrc}" controls autoplay playsinline></video>`;
+        else modalMedia.innerHTML = `<img src="${mediaSrc}" alt="VRTICE Mockup">`;
+        
         modal.classList.add('active');
         document.body.style.overflow = 'hidden'; 
-    }
+    };
 
     function closeModal() {
         modal.classList.remove('active');

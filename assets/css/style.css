@@ -290,6 +290,51 @@ body.bg-vrtice-dark {
 .modal-microcopy strong { color: var(--gold-base); }
 
 /* ==============================================================
+   CTAs ESTRATÉGICOS (CONVERSÃO)
+   ============================================================== */
+/* 1. CTA Bio (Topo) */
+.btn-cta-bio {
+    display: inline-flex; align-items: center; gap: 10px;
+    margin-top: 15px; padding: 12px 25px;
+    background: transparent; border: 1px solid var(--gold-base);
+    color: var(--gold-base); font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; text-decoration: none;
+    transition: var(--transition-smooth); border-radius: 2px;
+}
+.btn-cta-bio:hover { background: var(--gold-base); color: var(--black-abs); box-shadow: 0 0 20px rgba(200, 169, 112, 0.2); }
+
+/* 2. CTA Footer (Fechamento) - ALTO CONTRASTE */
+.btn-cta-footer {
+    display: inline-block; padding: 15px 40px; margin-top: 10px;
+    background: var(--white-off); color: var(--black-abs);
+    font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 800;
+    letter-spacing: 2px; text-decoration: none; border-radius: 2px;
+    border: 1px solid var(--white-off);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-cta-footer:hover { 
+    background: var(--black-abs); 
+    color: var(--gold-base); 
+    border-color: var(--gold-base); 
+    transform: translateY(-3px); 
+    box-shadow: 0 10px 25px rgba(200, 169, 112, 0.15); 
+}
+
+/* 3. CTA Fixo (Floating Zap) */
+.floating-zap {
+    position: fixed; bottom: 40px; right: 40px; z-index: 9999;
+    width: 55px; height: 55px; border-radius: 50%;
+    background: rgba(10, 10, 10, 0.85); border: 1px solid var(--border-subtle);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    display: flex; justify-content: center; align-items: center;
+    color: var(--white-off); font-size: 1.8rem; text-decoration: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: var(--transition-smooth);
+}
+.floating-zap:hover { border-color: #25D366; color: #25D366; transform: translateY(-5px); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.2); }
+
+/* ==============================================================
    RESPONSIVO (MOBILE)
    ============================================================== */
 @media (max-width: 768px) {
@@ -356,3 +401,19 @@ body.bg-vrtice-dark {
     .floating-pill-nav { width: 90%; max-width: 350px; bottom: 30px; padding: 4px; }
     .pill-btn { padding: 12px 0; width: 50%; text-align: center; font-size: 0.7rem; }
 }
+
+.floating-zap { bottom: 25px; right: 20px; width: 45px; height: 45px; font-size: 1.5rem; }
+
+/* ===================================
+       AJUSTE DE CAPA MOBILE (Latência Zero no Scroll)
+       =================================== */
+    .dossier-cover-wrapper {
+        /* Reduz de 35vh para 22vh. Traz o conteúdo para a primeira dobra. */
+        height: 22vh; 
+        min-height: 160px; /* Garante que não fique pequena demais em telas muito curtas */
+    }
+    
+    /* Ajuste fino na sobreposição para a nova altura */
+    .dossier-intersect-area {
+        margin-top: -40px; /* Era -50px ou mais no desktop. Reduzimos para não esmagar. */
+    }
