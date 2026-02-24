@@ -172,14 +172,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==============================================================
     const portfolioDB = {
         'tab-estetica': [
-            { id: 1, nicho: 'saude', img: 'assets/img/port-saude.jpg', prob: 'Clínica com imagem amadora que só atraía pacientes buscando desconto.', sol: 'Nova identidade visual premium e textos focados em transmitir exclusividade e segurança.' },
-            { id: 2, nicho: 'negocios', img: 'assets/img/port-tech.jpg', prob: 'Escritório de advocacia perdendo clientes para a concorrência por falta de posicionamento.', sol: 'Design sóbrio e copy persuasiva focada na resolução rápida de dores jurídicas.' },
-            { id: 3, nicho: 'gastronomia', img: 'assets/img/port-gastro.jpg', prob: 'Restaurante premium percebido como "comum" no iFood e Instagram.', sol: 'Fotografia Dark Mood + Posicionamento de exclusividade no menu.' },
-            { id: 4, nicho: 'cursos', img: 'assets/img/port-edu.jpg', prob: 'Curso de alto valor sendo confundido com tutorial gratuito.', sol: 'Embalagem visual High-Ticket e estrutura de vendas em formato de Dossiê.' }
+            { id: 1, nicho: 'saude', img: 'assets/img/CT.png', prob: 'Clínica com imagem amadora que só atraía pacientes buscando desconto.', sol: 'Nova identidade visual premium e textos focados em transmitir exclusividade e segurança.' },
+            { id: 1, nicho: 'saude', img: 'assets/img/ULTRALIFE.png', prob: 'Clínica com imagem amadora que só atraía pacientes buscando desconto.', sol: 'Nova identidade visual premium e textos focados em transmitir exclusividade e segurança.' },
+            { id: 2, nicho: 'negocios', img: 'assets/img/conserta.png', prob: 'Escritório de advocacia perdendo clientes para a concorrência por falta de posicionamento.', sol: 'Design sóbrio e copy persuasiva focada na resolução rápida de dores jurídicas.' },
+            { id: 3, nicho: 'gastronomia', img: 'assets/img/cantinho.png', prob: 'Restaurante premium percebido como "comum" no iFood e Instagram.', sol: 'Fotografia Dark Mood + Posicionamento de exclusividade no menu.' },
+            { id: 4, nicho: 'cursos', img: 'assets/img/amanteus.png', prob: 'Curso de alto valor sendo confundido com tutorial gratuito.', sol: 'Embalagem visual High-Ticket e estrutura de vendas em formato de Dossiê.' }
         ],
         'tab-video': [
-            { id: 1, thumb: 'assets/img/thumb-vid1.jpg', media: 'assets/video/v1.mp4', copy: 'Edição dinâmica com qualidade de cinema. O objetivo aqui foi prender a atenção do cliente nos primeiros 3 segundos, passando uma imagem de extrema autoridade e confiança.' },
-            { id: 2, thumb: 'assets/img/thumb-vid2.jpg', media: 'assets/video/v2.mp4', copy: 'Edição dinâmica com qualidade de cinema. O objetivo aqui foi prender a atenção do cliente nos primeiros 3 segundos, passando uma imagem de extrema autoridade e confiança.' }
+            { id: 1, thumb: 'assets/img/thumb-vid1.jpg', media: 'https://www.youtube.com/embed/Dtc8d0jnwqo?autoplay=1&rel=0', copy: 'Edição dinâmica com qualidade de cinema. O objetivo aqui foi prender a atenção do cliente nos primeiros 3 segundos.' },
+            { id: 2, thumb: 'assets/img/thumb-vid2.jpg', media: 'https://www.youtube.com/embed/S-Ox4jHQQ_I?autoplay=1&rel=0', copy: 'Edição dinâmica com qualidade de cinema. O objetivo aqui foi prender a atenção do cliente nos primeiros 3 segundos.' },
+            { id: 3, thumb: 'assets/img/thumb-vid3.png', media: 'https://www.youtube.com/embed/wHnxLfm3tFM?autoplay=1&rel=0', copy: 'Edição dinâmica com qualidade de cinema. O objetivo aqui foi prender a atenção do cliente nos primeiros 3 segundos.' },
+            { id: 4, thumb: 'assets/img/thumb-vid4.jpg', media: 'https://www.youtube.com/embed/YviMxoSkVCA?autoplay=1&rel=0', copy: 'Edição dinâmica com qualidade de cinema.' },
+            { id: 5, thumb: 'assets/img/thumb-vid5.jpg', media: 'https://www.youtube.com/embed/Kqh0m12OOTk?autoplay=1&rel=0', copy: 'Edição dinâmica com qualidade de cinema.' },
+            { id: 6, thumb: 'assets/img/thumb-vid6.jpg', media: 'https://www.youtube.com/embed/sgDzpWwcf7o?autoplay=1&rel=0', copy: 'Edição dinâmica com qualidade de cinema.' },
+            { id: 7, thumb: 'assets/img/thumb-vid7.jpg', media: 'https://www.youtube.com/embed/v747CmEKC-I?autoplay=1&rel=0', copy: 'Edição dinâmica com qualidade de cinema.' },
+            { id: 8, thumb: 'assets/img/thumb-vid8.jpg', media: 'https://www.youtube.com/embed/00DC5YgT8-E?autoplay=1&rel=0', copy: 'Edição dinâmica com qualidade de cinema.' },
+            { id: 9, thumb: 'assets/img/thumb-vid9.jpg', media: 'https://www.youtube.com/embed/SEU_ID_AQUI?autoplay=1&rel=0', copy: 'Edição dinâmica com qualidade de cinema.' },
+            { id: 10, thumb: 'assets/img/thumb-vid10.jpg', media: 'https://www.youtube.com/embed/SEU_ID_AQUI?autoplay=1&rel=0', copy: 'Edição dinâmica com qualidade de cinema.' }
         ],
         'tab-hardcode': [
             { id: 1, thumb: 'assets/img/thumb-code1.jpg', media: 'assets/img/mockup-1.png', copy: '<strong>Projeto: Escritório de Advocacia.</strong><br><br>O Diferencial: Site programado do zero (sem usar construtores lentos e prontos).<br><br>O Resultado: O site abre em menos de 1 segundo. Isso impediu que os clientes desistissem de esperar a página carregar, dobrando os pedidos de orçamento no WhatsApp.' },
@@ -303,9 +312,21 @@ document.addEventListener('DOMContentLoaded', () => {
     window.openModal = function(mediaSrc, copyText, type) {
         modalMedia.innerHTML = ''; 
         modalCopy.innerHTML = copyText;
-        if(type === 'video') modalMedia.innerHTML = `<video src="${mediaSrc}" controls autoplay playsinline></video>`;
-        else modalMedia.innerHTML = `<img src="${mediaSrc}" alt="VRTICE Mockup">`;
-        
+
+        if(type === 'video') {
+            // Injeção de Iframe de Alta Performance (YouTube / Vimeo)
+            modalMedia.innerHTML = `
+                <iframe 
+                    src="${mediaSrc}" 
+                    style="width: 100%; height: 70vh; max-width: 1000px; border-radius: 4px; box-shadow: 0 0 50px rgba(0,0,0,0.5); border: none; background: #000;" 
+                    allow="autoplay; fullscreen; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            `;
+        } else {
+            modalMedia.innerHTML = `<img src="${mediaSrc}" alt="VRTICE Mockup">`;
+        }
+
         modal.classList.add('active');
         document.body.style.overflow = 'hidden'; 
     };
