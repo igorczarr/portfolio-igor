@@ -417,3 +417,122 @@ body.bg-vrtice-dark {
     .dossier-intersect-area {
         margin-top: -40px; /* Era -50px ou mais no desktop. Reduzimos para não esmagar. */
     }
+
+    /* ==============================================================
+   CARDS DE VÍDEO DINÂMICOS (ESTÉTICA DE CINEMA)
+   ============================================================== */
+.port-card-media { 
+    position: relative; 
+    border: 1px solid var(--border-subtle); 
+    border-radius: 4px; 
+    cursor: pointer; 
+    overflow: hidden; /* Essencial para o zoom não vazar */
+    background: #080808; 
+    aspect-ratio: 16/9; /* Garante o formato de vídeo sempre */
+    transition: border-color 0.4s ease;
+}
+
+.port-card-media:hover { 
+    border-color: var(--gold-base); 
+}
+
+/* A Imagem Dinâmica do YouTube */
+.port-card-media img { 
+    width: 100%; 
+    height: 100%; 
+    display: block; 
+    object-fit: cover; 
+    opacity: 0.8; /* Levemente escurecida para destacar o play */
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease; 
+}
+
+/* Efeito de Zoom Cinematográfico no Hover */
+.port-card-media:hover img { 
+    opacity: 0.4; /* Escurece mais para focar no ícone */
+    transform: scale(1.05); /* Zoom suave */
+}
+
+/* O Overlay com Ícone e Texto */
+.play-overlay { 
+    position: absolute; 
+    inset: 0; 
+    display: flex; 
+    flex-direction: column; /* Ícone em cima, texto embaixo */
+    justify-content: center; 
+    align-items: center; 
+    gap: 15px;
+    opacity: 0; /* Invisível por padrão */
+    transform: translateY(20px); /* Começa um pouco mais para baixo */
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+    z-index: 2;
+}
+
+/* Ícone de Play */
+.play-overlay i { 
+    font-size: 4rem; 
+    color: var(--gold-base); 
+    filter: drop-shadow(0 0 20px rgba(200, 169, 112, 0.5)); /* Brilho dourado */
+}
+
+/* Novo Label de Texto */
+.play-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--white-off);
+    text-transform: uppercase;
+}
+
+/* Animação de Entrada no Hover */
+.port-card-media:hover .play-overlay { 
+    opacity: 1; 
+    transform: translateY(0); /* Sobe para a posição original */
+}
+
+/* ==============================================================
+   GRID SOCIAL 9:16 (ESTILO TIKTOK/REELS)
+   ============================================================== */
+
+/* 1. Configuração das Colunas no Desktop (4 por linha) */
+.port-item.social-grid-item {
+    width: 23%; /* 23% + 2% de margem (1% de cada lado) = 25% do espaço total */
+    margin: 1%; /* Mantém o espaçamento padrão do Isotope */
+}
+
+/* 2. Forçar o Aspecto Vertical 9:16 */
+.port-card-media.vertical-media {
+    /* Sobrescreve o 16/9 padrão */
+    aspect-ratio: 9 / 16; 
+}
+
+/* Garante que a imagem da thumb preencha o card vertical sem distorcer */
+.port-card-media.vertical-media img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* ==============================================================
+   AJUSTE RESPONSIVO DO GRID SOCIAL (MOBILE)
+   ============================================================== */
+@media (max-width: 768px) {
+    /* No mobile, sua regra atual força tudo para 100% de largura.
+       Precisamos sobrescrever isso especificamente para os vídeos verticais
+       para criar o efeito de 2 colunas (grid do Instagram).
+    */
+    .port-item.social-grid-item {
+        width: 48% !important; /* Força 2 colunas */
+        margin: 0 1% 20px 1% !important; /* Ajusta margens para caber lado a lado */
+    }
+    
+    /* Ajuste fino para a coluna da direita não quebrar o layout */
+    .port-item.social-grid-item:nth-child(even) {
+        margin-right: 0 !important;
+    }
+    .port-item.social-grid-item:nth-child(odd) {
+        margin-left: 0 !important;
+    }
+}

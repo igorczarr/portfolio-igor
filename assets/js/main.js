@@ -179,16 +179,16 @@ document.addEventListener('DOMContentLoaded', () => {
             { id: 4, nicho: 'cursos', img: 'assets/img/amanteus.png', prob: 'Curso de alto valor sendo confundido com tutorial gratuito.', sol: 'Embalagem visual High-Ticket e estrutura de vendas em formato de Dossiê.' }
         ],
         'tab-video': [
-            { id: 1, thumb: 'assets/img/thumb-vid1.jpg', media: 'https://www.youtube.com/embed/Dtc8d0jnwqo?autoplay=1&rel=0', copy: 'Edição dinâmica com qualidade de cinema. O objetivo aqui foi prender a atenção do cliente nos primeiros 3 segundos.' },
-            { id: 2, thumb: 'assets/img/thumb-vid2.jpg', media: 'https://www.youtube.com/embed/S-Ox4jHQQ_I?autoplay=1&rel=0', copy: 'Edição dinâmica com qualidade de cinema. O objetivo aqui foi prender a atenção do cliente nos primeiros 3 segundos.' },
-            { id: 3, thumb: 'assets/img/thumb-vid3.png', media: 'https://www.youtube.com/embed/wHnxLfm3tFM?autoplay=1&rel=0', copy: 'Edição dinâmica com qualidade de cinema. O objetivo aqui foi prender a atenção do cliente nos primeiros 3 segundos.' },
-            { id: 4, thumb: 'assets/img/thumb-vid4.jpg', media: 'https://www.youtube.com/embed/YviMxoSkVCA?autoplay=1&rel=0', copy: 'Edição dinâmica com qualidade de cinema.' },
-            { id: 5, thumb: 'assets/img/thumb-vid5.jpg', media: 'https://www.youtube.com/embed/Kqh0m12OOTk?autoplay=1&rel=0', copy: 'Edição dinâmica com qualidade de cinema.' },
-            { id: 6, thumb: 'assets/img/thumb-vid6.jpg', media: 'https://www.youtube.com/embed/sgDzpWwcf7o?autoplay=1&rel=0', copy: 'Edição dinâmica com qualidade de cinema.' },
-            { id: 7, thumb: 'assets/img/thumb-vid7.jpg', media: 'https://www.youtube.com/embed/v747CmEKC-I?autoplay=1&rel=0', copy: 'Edição dinâmica com qualidade de cinema.' },
-            { id: 8, thumb: 'assets/img/thumb-vid8.jpg', media: 'https://www.youtube.com/embed/00DC5YgT8-E?autoplay=1&rel=0', copy: 'Edição dinâmica com qualidade de cinema.' },
-            { id: 9, thumb: 'assets/img/thumb-vid9.jpg', media: 'https://www.youtube.com/embed/SEU_ID_AQUI?autoplay=1&rel=0', copy: 'Edição dinâmica com qualidade de cinema.' },
-            { id: 10, thumb: 'assets/img/thumb-vid10.jpg', media: 'https://www.youtube.com/embed/SEU_ID_AQUI?autoplay=1&rel=0', copy: 'Edição dinâmica com qualidade de cinema.' }
+            { id: 1, media: 'Dtc8d0jnwqo', copy: 'Edição dinâmica com qualidade de cinema. O objetivo aqui foi prender a atenção do cliente nos primeiros 3 segundos.' },
+            { id: 2, media: 'S-Ox4jHQQ_I', copy: 'Edição dinâmica com qualidade de cinema. O objetivo aqui foi prender a atenção do cliente nos primeiros 3 segundos.' },
+            { id: 3, media: 'wHnxLfm3tFM', copy: 'Edição dinâmica com qualidade de cinema. O objetivo aqui foi prender a atenção do cliente nos primeiros 3 segundos.' },
+            { id: 4, media: 'YviMxoSkVCA', copy: 'Edição dinâmica com qualidade de cinema.' },
+            { id: 5, media: 'Kqh0m12OOTk', copy: 'Edição dinâmica com qualidade de cinema.' },
+            { id: 6, media: 'sgDzpWwcf7o', copy: 'Edição dinâmica com qualidade de cinema.' },
+            { id: 7, media: 'v747CmEKC-I', copy: 'Edição dinâmica com qualidade de cinema.' },
+            { id: 8, media: '00DC5YgT8-E', copy: 'Edição dinâmica com qualidade de cinema.' },
+            { id: 9, media: 'SEU_ID_AQUI', copy: 'Edição dinâmica com qualidade de cinema.' },
+            { id: 10, media: 'SEU_ID_AQUI', copy: 'Edição dinâmica com qualidade de cinema.' }
         ],
         'tab-hardcode': [
             { id: 1, thumb: 'assets/img/thumb-code1.jpg', media: 'assets/img/mockup-1.png', copy: '<strong>Projeto: Escritório de Advocacia.</strong><br><br>O Diferencial: Site programado do zero (sem usar construtores lentos e prontos).<br><br>O Resultado: O site abre em menos de 1 segundo. Isso impediu que os clientes desistissem de esperar a página carregar, dobrando os pedidos de orçamento no WhatsApp.' },
@@ -259,13 +259,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>`).join('');
             } 
             else if (tabId === 'tab-video') {
-                newHTML = portfolioDB[tabId].map(item => `
-                    <div class="port-item width-50">
-                        <div class="port-card-media" onclick="openModal('${item.media}', '${item.copy}', 'video')">
-                            <img src="${item.thumb}" alt="Vídeo VRTICE" onerror="this.src='https://via.placeholder.com/800x450/111/333?text=PLAY+VIDEO'">
-                            <div class="play-overlay"><i class="ph-fill ph-play-circle"></i></div>
+                newHTML = portfolioDB[tabId].map(item => {
+                    const videoId = item.media;
+                    // Thumb de alta resolução (formato vertical se o vídeo for nativo vertical)
+                    // O YouTube corta automaticamente, mas o CSS vai forçar o 9:16
+                    const dynamicThumb = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+                    const embedLink = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+
+                    return `
+                    <div class="port-item social-grid-item">
+                        <div class="port-card-media vertical-media" onclick="openModal('${embedLink}', '${item.copy}', 'video')">
+                            <img src="${dynamicThumb}" alt="Vídeo VRTICE" loading="lazy">
+                            <div class="play-overlay">
+                                <i class="ph-fill ph-play-circle"></i>
+                                <span class="play-label">ASSISTIR CASE</span>
+                            </div>
                         </div>
-                    </div>`).join('');
+                    </div>`;
+                }).join('');
             }
             else if (tabId === 'tab-hardcode') {
                 newHTML = portfolioDB[tabId].map(item => `
