@@ -172,27 +172,35 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==============================================================
     const portfolioDB = {
         'tab-estetica': [
-            { id: 1, nicho: 'saude', img: 'assets/img/CT.png', prob: 'Clínica com imagem amadora que só atraía pacientes buscando desconto.', sol: 'Nova identidade visual premium e textos focados em transmitir exclusividade e segurança.' },
-            { id: 1, nicho: 'saude', img: 'assets/img/ULTRALIFE.png', prob: 'Clínica com imagem amadora que só atraía pacientes buscando desconto.', sol: 'Nova identidade visual premium e textos focados em transmitir exclusividade e segurança.' },
-            { id: 2, nicho: 'negocios', img: 'assets/img/conserta.png', prob: 'Escritório de advocacia perdendo clientes para a concorrência por falta de posicionamento.', sol: 'Design sóbrio e copy persuasiva focada na resolução rápida de dores jurídicas.' },
-            { id: 3, nicho: 'gastronomia', img: 'assets/img/cantinho.png', prob: 'Restaurante premium percebido como "comum" no iFood e Instagram.', sol: 'Fotografia Dark Mood + Posicionamento de exclusividade no menu.' },
-            { id: 4, nicho: 'cursos', img: 'assets/img/amanteus.png', prob: 'Curso de alto valor sendo confundido com tutorial gratuito.', sol: 'Embalagem visual High-Ticket e estrutura de vendas em formato de Dossiê.' }
+            { id: 1, nicho: 'saude', img: 'assets/img/CT.png', prob: 'Academia com bastante autoridade e volume de alunos, entretanto a presença digital era incongruente.', sol: 'Realizamos um estudo para entender o tipo de imagem, tipografia e cores ao qual o público reagia melhor e então produzimos peças de design, alinhadas exclusivamente ao consumo da persona.' },
+            { id: 1, nicho: 'saude', img: 'assets/img/ULTRALIFE.png', prob: 'Esta academia sentia o crescimento nas redes travado.', sol: 'Nosso plano de ação focou na identificação. Design simples, focado em mostrar a equipe e alunos, para elevar a identificação e conexão do público para a academia, isso gerou aumento no engajamento, consolidou a expansão e rendeu novas matrículas. ' },
+            { id: 2, nicho: 'negocios', img: 'assets/img/conserta.png', prob: 'Rede assistência técnica famosa, mas com presença amadora, buscava profissionalizar sua comunicação e perfil.', sol: 'Construímos portanto, um feed com design sobrio, elegante e sofisticado. Investimos na identificação e no sentimento de pertencimento do público. ' },
+            { id: 3, nicho: 'gastronomia', img: 'assets/img/cantinho.png', prob: 'Restaurante premium percebido como "comum" no iFood e Instagram.', sol: 'Melhoramos a fotografia, para trabalhar melhor a gula (sexy canvas), adicionamos o humor na narrativa e aproximamos o restaurante a necessidade e personalidade do cliente, investindo em peças que valorizam os pratos e deixam claro: Espetinho em Boa Vista, apenas na Cantinho do Espeto.' },
+            { id: 4, nicho: 'cursos', img: 'assets/img/amanteus.png', prob: 'Programa de aprimoramento masculino confundido com um tutorial gratuito', sol: 'Assumimos uma estética Old Money, alinhada a Identidade da Marca e produção de posts que valorizavam a atmosfera e personagem, não apenas a mensagem, aportando o conhecimento e transformação gerada.' }
         ],
         'tab-video': [
-            { id: 1, media: 'Dtc8d0jnwqo', copy: 'Edição dinâmica com qualidade de cinema. O objetivo aqui foi prender a atenção do cliente nos primeiros 3 segundos.' },
-            { id: 2, media: 'S-Ox4jHQQ_I', copy: 'Edição dinâmica com qualidade de cinema. O objetivo aqui foi prender a atenção do cliente nos primeiros 3 segundos.' },
-            { id: 3, media: 'wHnxLfm3tFM', copy: 'Edição dinâmica com qualidade de cinema. O objetivo aqui foi prender a atenção do cliente nos primeiros 3 segundos.' },
-            { id: 4, media: 'YviMxoSkVCA', copy: 'Edição dinâmica com qualidade de cinema.' },
-            { id: 5, media: 'Kqh0m12OOTk', copy: 'Edição dinâmica com qualidade de cinema.' },
-            { id: 6, media: 'sgDzpWwcf7o', copy: 'Edição dinâmica com qualidade de cinema.' },
-            { id: 7, media: 'v747CmEKC-I', copy: 'Edição dinâmica com qualidade de cinema.' },
-            { id: 8, media: '00DC5YgT8-E', copy: 'Edição dinâmica com qualidade de cinema.' },
-            { id: 9, media: 'SEU_ID_AQUI', copy: 'Edição dinâmica com qualidade de cinema.' },
-            { id: 10, media: 'SEU_ID_AQUI', copy: 'Edição dinâmica com qualidade de cinema.' }
+            { id: 1, media: 'Dtc8d0jnwqo', copy: 'Produção audiovisual do clipe Ano 3 Mil, do cantor Matteusinho, o cantor optou por uma estética caseira, similar a de boteco, realizamos portanto alternância de câmeras, e planos de filmagem, enfatizando o público, equipe musical, mantendo o destaque no cantor e na letra da música, através de cortes e trechos onde o público demonstra alto engajamento com a canção. Edição ritmada acompanhando a música.' },
+            { id: 2, media: 'S-Ox4jHQQ_I', copy: 'Edição dinâmica para apresentar o projeto da Liz, motion design foi utilizado, para compor a apresentação e criar legendas dinâmicas. Equilíbrio entre o ritmado e contemplativo.' },
+            { id: 3, media: 'wHnxLfm3tFM', copy: 'Criação de conteúdo, no modelo Ai Gen, desde a construção do personagem, aos prompts de geração de vídeo, edição e pós produção. O cliente opta por uma edição simples, valorizando o ritmo do vídeo, legenda hipnótica e recursos como o “follow reminder”, para fidelizar a audiência.' },
+            { id: 4, media: 'YviMxoSkVCA', copy: 'Edição festiva, focada em demonstrar a felicidade das celebrações de fim de ano na Casa do Forro, exaltando banquete, premiações e a energia natalina, edição ritmada, para acompanhar a música.' },
+            { id: 5, media: 'Kqh0m12OOTk', copy: 'Este conteúdo é focado na zueira com o personal, portanto usamos recursos de motion, no Adobe After Effects para produzir animações no personagem, como forma de humor. Além de manter o caráter de vídeo informativo, com cortes e animações inteligentes. Este vídeo rompeu a média de engajamento.' },
+            { id: 6, media: 'sgDzpWwcf7o', copy: 'Vídeo informativo, cuja edição está limitada a recursos, que potencializam a mensagem e trazem maior retenção para o conteúdo. Potencializando a conscientização do público, com o intuito de converter vendas.' },
+            { id: 7, media: 'v747CmEKC-I', copy: 'Conteúdo de venda automotiva, onde utilizamos recursos como o speed ramp, para gerar dinamismo e reportar a sensação de velocidade que um carro pode proporcionar, além da alternância nos planos de filmagem e ênfase estratégica em aspectos do carro' },
+            { id: 8, media: '00DC5YgT8-E', copy: 'Edição simples, mas dinâmica e ritmada, com speed ramp, para enfatizar a equipe e valorizar a mensagem.' },
         ],
         'tab-hardcode': [
-            { id: 1, thumb: 'assets/img/thumb-code1.jpg', media: 'assets/img/mockup-1.png', copy: '<strong>Projeto: Escritório de Advocacia.</strong><br><br>O Diferencial: Site programado do zero (sem usar construtores lentos e prontos).<br><br>O Resultado: O site abre em menos de 1 segundo. Isso impediu que os clientes desistissem de esperar a página carregar, dobrando os pedidos de orçamento no WhatsApp.' },
-            { id: 2, thumb: 'assets/img/thumb-code2.jpg', media: 'assets/img/mockup-2.png', copy: '<strong>Projeto: Clínica de Estética Avançada.</strong><br><br>O Diferencial: Site programado do zero (sem usar construtores lentos e prontos).<br><br>O Resultado: O site abre em menos de 1 segundo. A conversão das campanhas disparou ao oferecer uma experiência fluida no celular.' }
+            { 
+                id: 1, 
+                thumb: 'assets/img/thumb-code1.jpg', 
+                media: 'https://amanteus.com.br', // <-- COLOQUE O LINK REAL AQUI
+                copy: '<strong>Projeto: Infoproduto Masculino</strong><br><br>O Diferencial: Site programado do zero, oferecendo funcionalidades e animações que construtores e páginas prontas não possuem.<br><br>O Resultado: O site se tornou um ecossitema vivo, onde o cliente se sente imerso desde o primeiro segundo e acaba sendo guiado numa jornada. Isso impediu que os clientes desistissem de esperar na página por falta de estímulo, alavancando as vendas.' 
+            },
+            { 
+                id: 2, 
+                thumb: 'assets/img/thumb-code2.jpg', 
+                media: 'https://lizdesign.com.br',  // <-- COLOQUE O LINK REAL AQUI
+                copy: '<strong>Projeto: Brand Designer.</strong><br><br>O Diferencial: Site programado do zero (sem usar construtores lentos e prontos).<br><br>O Resultado: O site abre em menos de 1 segundo. A conversão das campanhas disparou ao oferecer uma experiência fluida no celular.' 
+            }
         ]
     };
 
@@ -281,11 +289,15 @@ document.addEventListener('DOMContentLoaded', () => {
             else if (tabId === 'tab-hardcode') {
                 newHTML = portfolioDB[tabId].map(item => `
                     <div class="port-item width-100">
-                        <div class="port-card-media code-mockup" onclick="openModal('${item.media}', '${item.copy}', 'image')">
+                        <div class="port-card-media code-mockup" onclick="openModal('${item.media}', '${item.copy}', 'website')">
                             <img src="${item.thumb}" alt="Site Ultra-rápido VRTICE" onerror="this.src='https://via.placeholder.com/1200x600/111/333?text=MOCKUP+SITE'">
-                            <div class="play-overlay"><i class="ph-fill ph-magnifying-glass-plus"></i></div>
+                            <div class="play-overlay">
+                                <i class="ph-fill ph-magnifying-glass-plus"></i>
+                                <span class="play-label">TESTAR PERFORMANCE AO VIVO</span>
+                            </div>
                         </div>
-                    </div>`).join('');
+                    </div>
+                `).join('');
             }
 
             renderArea.innerHTML = newHTML;
@@ -325,16 +337,23 @@ document.addEventListener('DOMContentLoaded', () => {
         modalCopy.innerHTML = copyText;
 
         if(type === 'video') {
-            // Injeção de Iframe de Alta Performance (YouTube / Vimeo)
+            modalMedia.innerHTML = `<iframe src="${mediaSrc}" style="width: 100%; height: 70vh; max-width: 1000px; border-radius: 4px; border: none; background: #000;" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+        } 
+        // --- NOVA ESTRUTURA PARA SITES AO VIVO ---
+        else if(type === 'website') {
             modalMedia.innerHTML = `
-                <iframe 
-                    src="${mediaSrc}" 
-                    style="width: 100%; height: 70vh; max-width: 1000px; border-radius: 4px; box-shadow: 0 0 50px rgba(0,0,0,0.5); border: none; background: #000;" 
-                    allow="autoplay; fullscreen; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
+                <div class="browser-mockup-frame">
+                    <div class="browser-header">
+                        <span class="dot close"></span>
+                        <span class="dot minimize"></span>
+                        <span class="dot expand"></span>
+                        <div class="url-bar">${mediaSrc.replace('https://', '')}</div>
+                    </div>
+                    <iframe src="${mediaSrc}" title="Live Preview" class="live-site-iframe"></iframe>
+                </div>
             `;
-        } else {
+        } 
+        else {
             modalMedia.innerHTML = `<img src="${mediaSrc}" alt="VRTICE Mockup">`;
         }
 

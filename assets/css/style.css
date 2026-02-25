@@ -536,3 +536,116 @@ body.bg-vrtice-dark {
         margin-left: 0 !important;
     }
 }
+
+/* ==============================================================
+   MOCKUP DE NAVEGADOR (IFRAME AO VIVO)
+   ============================================================== */
+.browser-mockup-frame {
+    width: 100%;
+    max-width: 1100px;
+    height: 75vh;
+    background: #ffffff; /* Fundo branco atrás do site caso demore a carregar */
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+}
+
+/* Barra Superior Estilo macOS */
+.browser-header {
+    height: 35px;
+    background: #1a1a1a;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    gap: 8px;
+    border-bottom: 1px solid var(--border-subtle);
+    flex-shrink: 0;
+    position: relative;
+}
+
+.browser-header .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #444;
+}
+
+/* Cores originais da Apple */
+.browser-header .dot.close { background: #ff5f56; }
+.browser-header .dot.minimize { background: #ffbd2e; }
+.browser-header .dot.expand { background: #27c93f; }
+
+/* Barra de URL falsa para dar mais realismo */
+.url-bar {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px 15px;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem;
+    color: #888;
+    letter-spacing: 1px;
+}
+
+/* O Site em si */
+.live-site-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    flex-grow: 1;
+}
+
+/* Responsividade do Iframe */
+@media (max-width: 768px) {
+    .browser-mockup-frame { height: 70vh; }
+    .url-bar { display: none; /* Esconde a URL no mobile para economizar espaço */ }
+}
+
+/* ==============================================================
+   RESPONSIVIDADE DO MOCKUP (Mutação: Mac -> iPhone)
+   ============================================================== */
+@media (max-width: 768px) {
+    /* Transforma a proporção e a carcaça para simular um telemóvel */
+    .browser-mockup-frame { 
+        height: 80vh; /* Mais alto, simulando o ecrã vertical */
+        border-radius: 35px; /* Bordas bem arredondadas de hardware */
+        border: 8px solid #1a1a1a; /* Borda grossa simulando a carcaça física */
+        box-shadow: 0 20px 40px rgba(0,0,0,0.9);
+    }
+    
+    .browser-header {
+        height: 25px; /* Reduz a altura da barra */
+        background: #1a1a1a;
+        justify-content: center;
+        border-bottom: none;
+    }
+
+    /* Oculta as 3 bolinhas da Apple (Paradigma de Desktop) */
+    .browser-header .dot { 
+        display: none; 
+    }
+    
+    /* Cria a "Dynamic Island" / Entalhe da Câmara do telemóvel */
+    .browser-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 18px;
+        background: #000;
+        border-radius: 0 0 12px 12px;
+        z-index: 10;
+    }
+
+    /* Oculta a URL para limpar o design no mobile */
+    .url-bar { 
+        display: none; 
+    }
+}
