@@ -191,13 +191,13 @@ document.addEventListener('DOMContentLoaded', () => {
         'tab-hardcode': [
             { 
                 id: 1, 
-                thumb: 'assets/img/thumb-code1.jpg', 
+                thumb: './assets/img/thum-vid1.png', 
                 media: 'https://amanteus.com.br', // <-- COLOQUE O LINK REAL AQUI
                 copy: '<strong>Projeto: Infoproduto Masculino</strong><br><br>O Diferencial: Site programado do zero, oferecendo funcionalidades e animações que construtores e páginas prontas não possuem.<br><br>O Resultado: O site se tornou um ecossitema vivo, onde o cliente se sente imerso desde o primeiro segundo e acaba sendo guiado numa jornada. Isso impediu que os clientes desistissem de esperar na página por falta de estímulo, alavancando as vendas.' 
             },
             { 
                 id: 2, 
-                thumb: 'assets/img/thumb-code2.jpg', 
+                thumb: './assets/img/thumb-vid3.png', 
                 media: 'https://lizdesign.com.br',  // <-- COLOQUE O LINK REAL AQUI
                 copy: '<strong>Projeto: Brand Designer.</strong><br><br>O Diferencial: Site programado do zero (sem usar construtores lentos e prontos).<br><br>O Resultado: O site abre em menos de 1 segundo. A conversão das campanhas disparou ao oferecer uma experiência fluida no celular.' 
             }
