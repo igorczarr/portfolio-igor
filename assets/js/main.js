@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { id: 5, media: 'Kqh0m12OOTk', copy: 'Este conteúdo é focado na zueira com o personal, portanto usamos recursos de motion, no Adobe After Effects para produzir animações no personagem, como forma de humor. Além de manter o caráter de vídeo informativo, com cortes e animações inteligentes. Este vídeo rompeu a média de engajamento.' },
             { id: 6, media: 'sgDzpWwcf7o', copy: 'Vídeo informativo, cuja edição está limitada a recursos, que potencializam a mensagem e trazem maior retenção para o conteúdo. Potencializando a conscientização do público, com o intuito de converter vendas.' },
             { id: 7, media: 'v747CmEKC-I', copy: 'Conteúdo de venda automotiva, onde utilizamos recursos como o speed ramp, para gerar dinamismo e reportar a sensação de velocidade que um carro pode proporcionar, além da alternância nos planos de filmagem e ênfase estratégica em aspectos do carro' },
-            { id: 8, media: '00DC5YgT8-E', copy: 'Edição simples, mas dinâmica e ritmada, com speed ramp, para enfatizar a equipe e valorizar a mensagem.' },
+            { id: 8, media: 'KoMFqHvY2XU', copy: 'Vídeo informativo, cuja edição está limitada a recursos, que potencializam a mensagem e trazem maior retenção para o conteúdo. Potencializando a conscientização do público, com o intuito de converter vendas.' },
         ],
         'tab-hardcode': [
             { 
