@@ -171,13 +171,49 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. BANCO DE DADOS DA EXECUÇÃO
     // ==============================================================
     const portfolioDB = {
-        'tab-estetica': [
-            { id: 1, nicho: 'saude', img: 'assets/img/CT.png', prob: 'Academia com bastante autoridade e volume de alunos, entretanto a presença digital era incongruente.', sol: 'Realizamos um estudo para entender o tipo de imagem, tipografia e cores ao qual o público reagia melhor e então produzimos peças de design, alinhadas exclusivamente ao consumo da persona.' },
-            { id: 1, nicho: 'saude', img: 'assets/img/ULTRALIFE.png', prob: 'Esta academia sentia o crescimento nas redes travado.', sol: 'Nosso plano de ação focou na identificação. Design simples, focado em mostrar a equipe e alunos, para elevar a identificação e conexão do público para a academia, isso gerou aumento no engajamento, consolidou a expansão e rendeu novas matrículas. ' },
-            { id: 2, nicho: 'negocios', img: 'assets/img/conserta.png', prob: 'Rede assistência técnica famosa, mas com presença amadora, buscava profissionalizar sua comunicação e perfil.', sol: 'Construímos portanto, um feed com design sobrio, elegante e sofisticado. Investimos na identificação e no sentimento de pertencimento do público. ' },
-            { id: 3, nicho: 'gastronomia', img: 'assets/img/cantinho.png', prob: 'Restaurante premium percebido como "comum" no iFood e Instagram.', sol: 'Melhoramos a fotografia, para trabalhar melhor a gula (sexy canvas), adicionamos o humor na narrativa e aproximamos o restaurante a necessidade e personalidade do cliente, investindo em peças que valorizam os pratos e deixam claro: Espetinho em Boa Vista, apenas na Cantinho do Espeto.' },
-            { id: 4, nicho: 'cursos', img: 'assets/img/amanteus.png', prob: 'Programa de aprimoramento masculino confundido com um tutorial gratuito', sol: 'Assumimos uma estética Old Money, alinhada a Identidade da Marca e produção de posts que valorizavam a atmosfera e personagem, não apenas a mensagem, aportando o conhecimento e transformação gerada.' }
-        ],
+    'tab-estetica': [
+        { 
+            id: 1, 
+            nicho: 'saude', 
+            img: 'assets/img/CT.png', 
+            gallery: ['assets/img/CT-1.png', 'assets/img/CT-2.png', 'assets/img/CT-3.png', 'assets/img/CT-4.png', 'assets/img/CT-5.png', 'assets/img/CT-6.png', 'assets/img/CT-7.png', 'assets/img/CT-8.png', 'assets/img/CT-9.png', 'assets/img/CT-10.png'], 
+            prob: 'Instituição com sólido lastro de mercado e volume de alunos, mas com uma presença digital que subestimava sua autoridade real.', 
+            sol: 'Refinamos o repertório visual através de um estudo antropológico da persona. Implementamos uma direção de arte técnica, alinhando a estética ao nível de excelência entregue no ambiente físico.' 
+        },
+        { 
+            id: 2, 
+            nicho: 'saude', 
+            img: 'assets/img/ULTRALIFE.png', 
+            gallery: ['assets/img/ULTRALIFE-1.png', 'assets/img/ULTRALIFE-2.png', 'assets/img/ULTRALIFE-3.png', 'assets/img/ULTRALIFE-4.png', 'assets/img/ULTRALIFE-5.png', 'assets/img/ULTRALIFE-6.png', 'assets/img/ULTRALIFE-7.png', 'assets/img/ULTRALIFE-8.png', 'assets/img/ULTRALIFE-9.png', 'assets/img/ULTRALIFE-10.png', 'assets/img/ULTRALIFE-11.png', 'assets/img/ULTRALIFE-12.png', 'assets/img/ULTRALIFE-13.png', 'assets/img/ULTRALIFE-14.png'], 
+            prob: 'Estagnação de crescimento orgânico e baixa taxa de conversão por falta de diferenciação competitiva.', 
+            sol: 'O plano de ação focou em humanização tática. Estruturamos o design para destacar a equipe e a comunidade, gerando conexão imediata. O resultado foi a consolidação da expansão e um aumento real no volume de novas matrículas.' 
+        },
+        { 
+            id: 3, 
+            nicho: 'negocios', 
+            img: 'assets/img/conserta.png', 
+            gallery: ['assets/img/conserta-1.png', 'assets/img/conserta-2.png', 'assets/img/conserta-3.png', 'assets/img/conserta-4.png', 'assets/img/conserta-5.png', 'assets/img/conserta-6.png'], 
+            prob: 'Rede consolidada de assistência técnica com comunicação visual desconexa, buscando elevar seu status para o mercado premium.', 
+            sol: 'Construímos um ecossistema visual baseado em sobriedade e sofisticação. Investimos em elementos que reforçam a segurança e o profissionalismo, transformando o perfil em uma vitrine institucional de alto padrão.' 
+        },
+        { 
+            id: 4, 
+            nicho: 'gastronomia', 
+            img: 'assets/img/CANTINHO.png', 
+            gallery: ['assets/img/cantinho-1.png', 'assets/img/cantinho-2.png', 'assets/img/cantinho-3.png', 'assets/img/cantinho-4.png', 'assets/img/cantinho-5.png', 'assets/img/cantinho-6.png'], 
+            prob: 'Operação premium percebida como uma opção genérica nas plataformas de delivery e redes sociais.', 
+            sol: 'Aplicamos engenharia visual na fotografia gastronômica e ajustamos o tom de voz para uma narrativa de exclusividade. Elevamos o desejo pelo produto, estabelecendo a marca como a referência absoluta em seu segmento na região.' 
+        },
+        { 
+            id: 5, 
+            nicho: 'cursos', 
+            img: 'assets/img/amanteus.png', 
+            gallery: ['assets/img/amanteus-1.jpg', 'assets/img/amanteus-2.jpg', 'assets/img/amanteus-3.jpg', 'assets/img/amanteus-4.jpg', 'assets/img/amanteus-5.jpg', 'assets/img/amanteus-6.jpg'], 
+            prob: 'Programa de alto impacto confundido com conteúdo informativo comum, gerando resistência no preço.', 
+            sol: 'Implementamos uma estética de luxo clássico alinhada à maturidade da marca. Focamos na valorização da atmosfera e do estilo de vida, posicionando o conhecimento como um ativo de transformação exclusivo e de alto valor.' 
+        }
+    ],
+
         'tab-video': [
             { id: 1, media: 'Dtc8d0jnwqo', copy: 'Produção audiovisual do clipe Ano 3 Mil, do cantor Matteusinho, o cantor optou por uma estética caseira, similar a de boteco, realizamos portanto alternância de câmeras, e planos de filmagem, enfatizando o público, equipe musical, mantendo o destaque no cantor e na letra da música, através de cortes e trechos onde o público demonstra alto engajamento com a canção. Edição ritmada acompanhando a música.' },
             { id: 2, media: 'S-Ox4jHQQ_I', copy: 'Edição dinâmica para apresentar o projeto da Liz, motion design foi utilizado, para compor a apresentação e criar legendas dinâmicas. Equilíbrio entre o ritmado e contemplativo.' },
@@ -192,13 +228,19 @@ document.addEventListener('DOMContentLoaded', () => {
             { 
                 id: 1, 
                 thumb: './assets/img/thum-vid1.png', 
-                media: 'https://amanteus.com.br', // <-- COLOQUE O LINK REAL AQUI
+                media: 'https://amanteus.com.br/downsell', // <-- COLOQUE O LINK REAL AQUI
                 copy: '<strong>Projeto: Infoproduto Masculino</strong><br><br>O Diferencial: Site programado do zero, oferecendo funcionalidades e animações que construtores e páginas prontas não possuem.<br><br>O Resultado: O site se tornou um ecossitema vivo, onde o cliente se sente imerso desde o primeiro segundo e acaba sendo guiado numa jornada. Isso impediu que os clientes desistissem de esperar na página por falta de estímulo, alavancando as vendas.' 
             },
             { 
                 id: 2, 
                 thumb: './assets/img/thumb-vid3.png', 
                 media: 'https://lizdesign.com.br',  // <-- COLOQUE O LINK REAL AQUI
+                copy: '<strong>Projeto: Brand Designer.</strong><br><br>O Diferencial: Site programado do zero (sem usar construtores lentos e prontos).<br><br>O Resultado: O site abre em menos de 1 segundo. A conversão das campanhas disparou ao oferecer uma experiência fluida no celular.' 
+            },
+            { 
+                id: 2, 
+                thumb: './assets/img/thumb-vid2.png', 
+                media: 'https://rosecarvalho38.github.io/Terappia-TRG/',  // <-- COLOQUE O LINK REAL AQUI
                 copy: '<strong>Projeto: Brand Designer.</strong><br><br>O Diferencial: Site programado do zero (sem usar construtores lentos e prontos).<br><br>O Resultado: O site abre em menos de 1 segundo. A conversão das campanhas disparou ao oferecer uma experiência fluida no celular.' 
             }
         ]
@@ -252,19 +294,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let newHTML = '';
             if(tabId === 'tab-estetica') {
-                newHTML = portfolioDB[tabId].map(item => `
+                newHTML = portfolioDB[tabId].map(item => {
+                    // Transforma o array da galeria numa string segura para passar no HTML
+                    const galleryStr = item.gallery ? JSON.stringify(item.gallery).replace(/"/g, '&quot;') : '';
+                    
+                    return `
                     <div class="port-item filter-${item.nicho}">
-                        <div class="port-card-estetica">
-                            <div class="img-wrapper"><img src="${item.img}" alt="Projeto VRTICE" onerror="this.src='https://via.placeholder.com/600x600/111/333?text=VRTICE+ASSET'"></div>
+                        <div class="port-card-estetica" onclick="openModal('${galleryStr}', '<strong>O Desafio:</strong> ${item.prob}<br><br><strong>A Solução:</strong> ${item.sol}', 'gallery')">
+                            <div class="img-wrapper"><img src="${item.img}" alt="Projeto VRTICE"></div>
                             <div class="hover-report">
                                 <div class="report-content">
-                                    <span class="r-label">ANÁLISE DE EXECUÇÃO</span>
-                                    <p><strong>O Desafio:</strong> ${item.prob}</p>
-                                    <p><strong>A Solução:</strong> ${item.sol}</p>
+                                    <span class="r-label">VER PROJETO COMPLETO</span>
+                                    <p><strong>Clique para expandir o dossiê.</strong></p>
                                 </div>
                             </div>
                         </div>
-                    </div>`).join('');
+                    </div>
+                `}).join('');
             } 
             else if (tabId === 'tab-video') {
                 newHTML = portfolioDB[tabId].map(item => {
@@ -353,6 +399,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
         } 
+        // --- NOVA ESTRUTURA PARA GALERIA (CARROSSEL DE ARTES) ---
+        else if(type === 'gallery') {
+            // Converte a string de volta para Array
+            const images = JSON.parse(mediaSrc.replace(/&quot;/g, '"'));
+            let galleryHTML = '<div class="modal-gallery-grid">';
+            images.forEach(img => {
+                galleryHTML += `<div class="gallery-img-box"><img src="${img}" alt="Peça VRTICE" loading="lazy"></div>`;
+            });
+            galleryHTML += '</div>';
+            modalMedia.innerHTML = galleryHTML;
+        }
         else {
             modalMedia.innerHTML = `<img src="${mediaSrc}" alt="VRTICE Mockup">`;
         }
@@ -371,3 +428,36 @@ document.addEventListener('DOMContentLoaded', () => {
     if(modal) modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
     document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
 });
+
+// ==============================================================
+    // 8. ANIMAÇÃO DE REVELAÇÃO DA OFERTA (SCROLL)
+    // ==============================================================
+    // Garante que os cartões de serviço apareçam com fluidez apenas quando o cliente rolar até eles
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const solutionCards = document.querySelectorAll('.vrtice-solutions .anim-fade-up');
+        
+        if (solutionCards.length > 0) {
+            gsap.fromTo(solutionCards, 
+                { 
+                    opacity: 0, 
+                    y: 60 // Começam 60 pixels mais abaixo
+                }, 
+                { 
+                    opacity: 1, 
+                    y: 0, // Sobem para a posição original
+                    duration: 0.9, 
+                    stagger: 0.2, // Efeito dominó: revela um cartão a cada 0.2 segundos
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: ".vrtice-solutions",
+                        start: "top 85%", // A mágica acontece quando a secção atinge 85% da tela
+                        toggleActions: "play none none reverse" // Se ele subir a página e descer de novo, a animação repete
+                    }
+                }
+            );
+        }
+    }
+
+    
